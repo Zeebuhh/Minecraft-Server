@@ -6,7 +6,7 @@ services:
     environment:
       EULA: "TRUE"
     volumes:
-      - mc_data:/data
+      - mc_data:/app/world
     restart: on-failure
 
 volumes:
