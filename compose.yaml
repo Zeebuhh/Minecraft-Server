@@ -1,0 +1,13 @@
+services:
+  mc-server:
+    build: .
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+    volumes:
+      - mc_data:/data
+    restart: on-failure
+
+volumes:
+  mc_data:
