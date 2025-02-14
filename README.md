@@ -54,56 +54,38 @@ Ensure you have the following installed on your system:
 
 1. **Dockerfile** (defines the container setup):
 
-   ```dockerfile
-   FROM openjdk:21-jdk  # Uses OpenJDK 21 as the base image (required for Minecraft)
-
-   WORKDIR /app  # Sets the working directory inside the container
-
-   COPY server.jar eula.txt server.properties ./  # Copies necessary files into the container
-
-   RUN chmod +x server.jar  # Ensures the server.jar file is executable
-
-   EXPOSE 25565  # Opens port 25565 for external connections
-
-   CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "server.jar", "nogui"]  # Defines the command to run the Minecraft server (official command)
-   ```
+   - Create and set up a [Dockerfile](./Dockerfile).
 
 2. **docker-compose.yml** (defines the service):
 
-   ```yaml
-   services:
-     mc-server:
-       build: . # Builds the Docker image using the Dockerfile in the current directory
-       ports:
-         - "8888:25565" # Maps port 8888 on the host to port 25565 inside the container
-       environment:
-         EULA: "TRUE" # Accepts the Minecraft End User License Agreement
-       volumes:
-         - mc_data:/app/world # Creates a named volume to persist world data
-       restart: on-failure # Restarts the container if it crashes
-
-   volumes:
-     mc_data: # Defines the volume for persistent data storage
-   ```
+   - Create and set up a [compose.yaml](./compose.yaml).
 
 3. **eula.txt** (required to accept Minecraft's terms and conditions):
+
+   - Create a txt and add:
 
    ```txt
    eula=true
    ```
 
 4. **server.properties** (server configuration settings):
-   ```properties
-   gamemode=survival
-   difficulty=easy
-   max-players=20
-   server-port=25565
-   online-mode=true # NOTE: This is only for official mojang-accounts, if you want to allow other users use "false" (unsafe)
-   allow-nether=true
-   spawn-monsters=true
-   enable-command-block=false
-   ```
-   Modify as needed to adjust server settings.
+   - Set up a server properties variable in an .env file and refer to it in server.properties
+   - Example:
+
+```properties
+   SERVER_PORT=25565
+   SERVER_IP=
+   ONLINE_MODE=false
+   MAX_PLAYERS=20
+   GAMEMODE=survival
+   DIFFICULTY=easy
+   PVP=true
+   SPAWN_MONSTERS=true
+   ALLOW_NETHER=true
+   ENABLE_COMMAND_BLOCK=false
+```
+
+Modify as needed to adjust server settings.
 
 ### Modifications
 

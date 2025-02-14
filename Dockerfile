@@ -2,10 +2,11 @@ FROM openjdk:21-jdk
 
 WORKDIR /app
 
-COPY server.jar eula.txt server.properties ./
+COPY server.jar eula.txt ./  
+COPY entrypoint.sh /entrypoint.sh  
 
-RUN chmod +x server.jar
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 25565
 
-CMD ["java", "-Xmx1024M", "-Xms1024M", "-jar", "server.jar", "nogui"]
+ENTRYPOINT ["/entrypoint.sh"]
