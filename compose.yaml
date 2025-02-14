@@ -1,0 +1,15 @@
+services:
+  mc-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:25565"
+    environment:
+      EULA: "TRUE"
+    volumes:
+      - mc_data:/app/world
+    restart: on-failure
+
+volumes:
+  mc_data:
