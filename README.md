@@ -69,8 +69,7 @@ Ensure you have the following installed on your system:
    ```
 
 4. **server.properties** (server configuration settings):
-   - Set up a server properties variable in an .env file and refer to it in server.properties
-   - Example:
+   - Set up a server properties variable in an .env file
 
 ```properties
    SERVER_PORT=25565
@@ -89,7 +88,7 @@ Modify as needed to adjust server settings.
 
 ### Modifications
 
-- To change server settings, edit `server.properties`.
+- To change server settings, edit `server.properties` via `.env`.
 - To update the Minecraft version, replace `server.jar` with the latest version.
 - Restart the server after making changes:
   ```
