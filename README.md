@@ -54,11 +54,11 @@ Ensure you have the following installed on your system:
 
 1. **Dockerfile** (defines the container setup):
 
-   - Create and set up a [Dockerfile](./Dockerfile).
+   - Create and set up a [Dockerfile](./Dockerfile) for creating the server container.
 
 2. **docker-compose.yml** (defines the service):
 
-   - Create and set up a [compose.yaml](./compose.yaml).
+   - Create and set up a [compose.yaml](./compose.yaml) for managing the container and volumes.
 
 3. **eula.txt** (required to accept Minecraft's terms and conditions):
 
@@ -88,7 +88,7 @@ Modify as needed to adjust server settings.
 
 ### Modifications
 
-- To change server settings, edit `server.properties` via `.env`.
+- To change server settings, edit `server.properties` via `.env` and add to `entrypoint.sh` script.
 - To update the Minecraft version, replace `server.jar` with the latest version.
 - Restart the server after making changes:
   ```
